@@ -170,4 +170,4 @@ For Filament documentation: https://filamentphp.com/docs
 
 ---
 
-Happy Learning! 🚀 Track your journey to becoming a full-stack software engineer!
+Happy Coding! 🚀 Track your journey to becoming a full-stack software engineer!
