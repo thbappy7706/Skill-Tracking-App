@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -10,6 +11,7 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Width;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -24,13 +26,16 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
+            ->default()->defaultThemeMode(ThemeMode::Dark)
+//            ->brandName('SkillUpX')
+            ->brandLogo(fn () => view('filament.admin.logo'))
             ->id('admin')
-            ->path('admin')
-            ->login()
-            ->registration()
+            ->path('admin')->login()->registration()->profile()->passwordReset()
+            ->spa(hasPrefetching: true)->collapsibleNavigationGroups()
+            ->sidebarCollapsibleOnDesktop()->sidebarWidth('16rem')
+            ->maxContentWidth(Width::Full)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Emerald,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

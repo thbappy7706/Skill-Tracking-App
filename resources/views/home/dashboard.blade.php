@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Skill Dashboard - SkillUpx</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -37,19 +35,19 @@
         }
 
         .animate-slide-up {
-            animation: slideInUp 0.6s ease-out forwards;
+            animation: slideInUp 0.2s ease-out forwards;
         }
 
         .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeIn 0.2s ease-out forwards;
         }
 
         .progress-bar-animate {
-            animation: growWidth 1.5s ease-out forwards;
+            animation: growWidth 0.5s ease-out forwards;
         }
 
         .bar-fill-animate {
-            animation: growHeight 1.2s ease-out forwards;
+            animation: growHeight 0.2s ease-out forwards;
         }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
