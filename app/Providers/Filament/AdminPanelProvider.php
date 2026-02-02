@@ -28,7 +28,6 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()->defaultThemeMode(ThemeMode::Dark)
-//            ->brandName('SkillUpX')
             ->brandLogo(fn () => view('filament.admin.logo'))
             ->id('admin')
             ->path('admin')->login()->registration()->profile()->passwordReset()
@@ -59,18 +58,6 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->renderHook(
-                'panels::body.start',
-                fn () => '<style>
-                aside.fi-main-sidebar {
-                    border-right: 2px solid #e5e7eb !important;
-                }
-                .dark aside.fi-main-sidebar {
-                    border-right: 2px solid #374151 !important;
-                }
-            </style>'
-            )
-
             ->renderHook(
                 'panels::body.start',
                 fn () => view('filament.hooks.sidebar-styles')
