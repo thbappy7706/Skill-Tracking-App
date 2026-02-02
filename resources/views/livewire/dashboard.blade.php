@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="flex items-center gap-4">
-                        <a href="{{ route('filament.admin.pages.dashboard') }}"
+                        <a   href="{{ route('filament.admin.pages.dashboard') }}"
                            class="hidden sm:inline-block px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all text-sm">
                             Full Dashboard
                         </a>

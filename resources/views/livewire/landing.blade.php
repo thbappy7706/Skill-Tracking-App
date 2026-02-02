@@ -24,7 +24,7 @@
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#features" class="text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium">Features</a>
                     <a href="#how-it-works" class="text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium">How It Works</a>
-                    <a href="{{ route('filament.admin.auth.login') }}"
+                    <a   href="{{ route('filament.admin.auth.login') }}"
                        class="px-6 py-2.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-all text-sm font-semibold">
                         Login
                     </a>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="{{ route('filament.admin.auth.login') }}"
+                            <a   href="{{ route('filament.admin.auth.login') }}"
                                class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all text-center">
                                 Start Tracking Free
                             </a>
@@ -250,7 +250,7 @@
                         Join hundreds of developers who are accelerating their growth with SkillUpx.
                         It's free to get started.
                     </p>
-                    <a href="{{ route('filament.admin.auth.login') }}"
+                    <a   href="{{ route('filament.admin.auth.login') }}"
                        class="inline-block px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
                         Create Free Account
                     </a>
