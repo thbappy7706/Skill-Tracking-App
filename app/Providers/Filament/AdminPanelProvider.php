@@ -20,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -60,8 +61,24 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 'panels::body.start',
+                fn () => '<style>
+                aside.fi-main-sidebar {
+                    border-right: 2px solid #e5e7eb !important;
+                }
+                .dark aside.fi-main-sidebar {
+                    border-right: 2px solid #374151 !important;
+                }
+            </style>'
+            )
+
+            ->renderHook(
+                'panels::body.start',
                 fn () => view('filament.hooks.sidebar-styles')
             )
+
+            ->plugins([
+//                FilamentBackgroundsPlugin::make(),
+            ])
             ->authMiddleware([
                 Authenticate::class,
             ]);
