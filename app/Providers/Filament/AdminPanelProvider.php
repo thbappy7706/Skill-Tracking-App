@@ -57,11 +57,13 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
+            ])->databaseTransactions()
             ->renderHook(
                 'panels::body.start',
                 fn () => view('filament.hooks.sidebar-styles')
             )
+            ->resourceCreatePageRedirect('index')
+            ->resourceEditPageRedirect('index')
 
             ->plugins([
 //                FilamentBackgroundsPlugin::make(),
