@@ -11,6 +11,7 @@ class LearningResource extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'skill_id',
         'title',
         'type',
@@ -28,6 +29,11 @@ class LearningResource extends Model
         'started_at' => 'date',
         'completed_at' => 'date',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function skill(): BelongsTo
     {

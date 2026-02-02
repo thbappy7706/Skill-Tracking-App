@@ -22,7 +22,11 @@ class SkillForm
                     ->icon('heroicon-o-information-circle')
                     ->schema([
                         Select::make('category_id')
-                            ->relationship('category', 'name')
+                            ->relationship(
+                                name: 'category',
+                                titleAttribute: 'name',
+                                modifyQueryUsing: fn ($query) => $query->where('user_id', auth()->id())
+                            )
                             ->required()
                             ->searchable()
                             ->preload()
@@ -30,6 +34,11 @@ class SkillForm
                                 TextInput::make('name')->required(),
                                 Textarea::make('description'),
                             ])
+                            ->createOptionUsing(function (Select $component, array $data) {
+                                $data['user_id'] = auth()->id();
+                                $record = $component->getRelationship()->create($data);
+                                return $record->getKey();
+                            })
                             ->columnSpan(2),
 
                         TextInput::make('name')

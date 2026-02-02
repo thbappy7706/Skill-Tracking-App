@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('learning_resources', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->enum('type', ['course', 'book', 'video', 'article', 'tutorial', 'documentation', 'podcast', 'other'])->default('course');

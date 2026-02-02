@@ -11,6 +11,7 @@ class Milestone extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'skill_id',
         'title',
         'description',
@@ -26,6 +27,11 @@ class Milestone extends Model
         'target_date' => 'date',
         'completed_at' => 'date',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function skill(): BelongsTo
     {

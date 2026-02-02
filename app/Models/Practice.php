@@ -11,6 +11,7 @@ class Practice extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'skill_id',
         'title',
         'description',
@@ -28,6 +29,11 @@ class Practice extends Model
         'difficulty' => 'integer',
         'quality_rating' => 'integer',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function skill(): BelongsTo
     {

@@ -8,14 +8,19 @@ use App\Models\Milestone;
 use App\Models\Practice;
 use App\Models\Skill;
 use App\Models\SkillCategory;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class SkillTrackerSeeder extends Seeder
 {
     public function run(): void
     {
+        // Get the first user (created in DatabaseSeeder)
+        $user = User::first();
+
         // Create Categories for Full-Stack Development
         $frontend = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'Frontend Development',
             'description' => 'Client-side web development technologies and frameworks',
             'icon' => 'code-bracket',
@@ -24,6 +29,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $backend = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'Backend Development',
             'description' => 'Server-side development and APIs',
             'icon' => 'server',
@@ -32,6 +38,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $database = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'Databases',
             'description' => 'Database design and management',
             'icon' => 'circle-stack',
@@ -40,6 +47,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $devops = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'DevOps & Cloud',
             'description' => 'Deployment, CI/CD, and cloud infrastructure',
             'icon' => 'cloud',
@@ -48,6 +56,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $mobile = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'Mobile Development',
             'description' => 'Native and cross-platform mobile apps',
             'icon' => 'device-phone-mobile',
@@ -56,6 +65,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $tools = SkillCategory::create([
+            'user_id' => $user->id,
             'name' => 'Tools & Practices',
             'description' => 'Development tools, version control, and best practices',
             'icon' => 'wrench-screwdriver',
@@ -65,6 +75,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Frontend Skills
         $html = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $frontend->id,
             'name' => 'HTML5',
             'description' => 'Semantic HTML, accessibility, and modern HTML features',
@@ -76,6 +87,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $css = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $frontend->id,
             'name' => 'CSS3 & Tailwind',
             'description' => 'Modern CSS, Flexbox, Grid, animations, and Tailwind CSS',
@@ -87,6 +99,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $javascript = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $frontend->id,
             'name' => 'JavaScript (ES6+)',
             'description' => 'Modern JavaScript, async/await, modules, and DOM manipulation',
@@ -98,6 +111,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $react = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $frontend->id,
             'name' => 'React',
             'description' => 'React hooks, context, performance optimization',
@@ -109,6 +123,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $vue = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $frontend->id,
             'name' => 'Vue.js',
             'description' => 'Vue 3, Composition API, Pinia',
@@ -121,6 +136,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Backend Skills
         $php = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $backend->id,
             'name' => 'PHP',
             'description' => 'Modern PHP 8.x features, OOP, namespaces',
@@ -132,6 +148,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $laravel = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $backend->id,
             'name' => 'Laravel',
             'description' => 'Laravel framework, Eloquent, queues, events',
@@ -143,6 +160,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $nodejs = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $backend->id,
             'name' => 'Node.js & Express',
             'description' => 'Backend JavaScript with Node and Express',
@@ -154,6 +172,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $python = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $backend->id,
             'name' => 'Python',
             'description' => 'Python programming and scripting',
@@ -166,6 +185,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Database Skills
         $mysql = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $database->id,
             'name' => 'MySQL',
             'description' => 'Relational database design, queries, optimization',
@@ -177,6 +197,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $postgresql = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $database->id,
             'name' => 'PostgreSQL',
             'description' => 'Advanced PostgreSQL features',
@@ -188,6 +209,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $mongodb = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $database->id,
             'name' => 'MongoDB',
             'description' => 'NoSQL database for flexible data storage',
@@ -200,6 +222,7 @@ class SkillTrackerSeeder extends Seeder
 
         // DevOps Skills
         $git = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $devops->id,
             'name' => 'Git & GitHub',
             'description' => 'Version control, branching, collaboration',
@@ -211,6 +234,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $docker = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $devops->id,
             'name' => 'Docker',
             'description' => 'Containerization and Docker Compose',
@@ -222,6 +246,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $aws = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $devops->id,
             'name' => 'AWS',
             'description' => 'EC2, S3, RDS, Lambda basics',
@@ -234,6 +259,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Mobile Skills
         $reactNative = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $mobile->id,
             'name' => 'React Native',
             'description' => 'Cross-platform mobile development',
@@ -246,6 +272,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Tools Skills
         $vscode = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $tools->id,
             'name' => 'VS Code',
             'description' => 'IDE mastery, extensions, shortcuts',
@@ -257,6 +284,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         $testing = Skill::create([
+            'user_id' => $user->id,
             'category_id' => $tools->id,
             'name' => 'Testing (PHPUnit, Jest)',
             'description' => 'Unit testing, integration testing, TDD',
@@ -269,6 +297,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Add Learning Resources
         LearningResource::create([
+            'user_id' => $user->id,
             'skill_id' => $react->id,
             'title' => 'React - The Complete Guide',
             'type' => 'course',
@@ -280,6 +309,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         LearningResource::create([
+            'user_id' => $user->id,
             'skill_id' => $laravel->id,
             'title' => 'Laravel Documentation',
             'type' => 'documentation',
@@ -292,6 +322,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         LearningResource::create([
+            'user_id' => $user->id,
             'skill_id' => $docker->id,
             'title' => 'Docker Mastery',
             'type' => 'course',
@@ -302,6 +333,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         LearningResource::create([
+            'user_id' => $user->id,
             'skill_id' => $aws->id,
             'title' => 'AWS Certified Solutions Architect',
             'type' => 'course',
@@ -312,6 +344,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Add Practice Sessions
         Practice::create([
+            'user_id' => $user->id,
             'skill_id' => $react->id,
             'title' => 'Built Todo App with React Hooks',
             'description' => 'Created a full-featured todo application using useState and useEffect',
@@ -323,6 +356,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Practice::create([
+            'user_id' => $user->id,
             'skill_id' => $laravel->id,
             'title' => 'API Development with Laravel',
             'description' => 'Built RESTful API with authentication',
@@ -334,6 +368,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Practice::create([
+            'user_id' => $user->id,
             'skill_id' => $docker->id,
             'title' => 'Dockerized Laravel App',
             'description' => 'Set up Docker containers for Laravel with Nginx and MySQL',
@@ -344,6 +379,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Practice::create([
+            'user_id' => $user->id,
             'skill_id' => $javascript->id,
             'title' => 'Async JavaScript Practice',
             'description' => 'Practiced promises, async/await, and fetch API',
@@ -355,6 +391,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Add Milestones
         Milestone::create([
+            'user_id' => $user->id,
             'skill_id' => $react->id,
             'title' => 'Build First React Project',
             'description' => 'Complete a full React application from scratch',
@@ -365,6 +402,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Milestone::create([
+            'user_id' => $user->id,
             'skill_id' => $laravel->id,
             'title' => 'Deploy Laravel App to Production',
             'description' => 'Successfully deploy a Laravel application',
@@ -374,6 +412,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Milestone::create([
+            'user_id' => $user->id,
             'skill_id' => $docker->id,
             'title' => 'Master Docker Compose',
             'description' => 'Create multi-container applications',
@@ -382,6 +421,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Milestone::create([
+            'user_id' => $user->id,
             'skill_id' => $aws->id,
             'title' => 'AWS Certification',
             'description' => 'Pass AWS Solutions Architect Associate exam',
@@ -391,6 +431,7 @@ class SkillTrackerSeeder extends Seeder
 
         // Add Goals
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Master React and Build 5 Projects',
             'description' => 'Become proficient in React by building various types of applications',
             'type' => 'quarterly',
@@ -402,6 +443,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Learn DevOps Fundamentals',
             'description' => 'Master Docker, CI/CD, and AWS basics',
             'type' => 'yearly',
@@ -413,6 +455,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Contribute to Open Source',
             'description' => 'Make meaningful contributions to 3 open source projects',
             'type' => 'yearly',
@@ -424,6 +467,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Build Full-Stack Portfolio',
             'description' => 'Create a comprehensive portfolio showcasing full-stack skills',
             'type' => 'career',
@@ -435,6 +479,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Practice Coding Daily',
             'description' => 'Dedicate at least 2 hours daily to coding practice',
             'type' => 'daily',
@@ -446,6 +491,7 @@ class SkillTrackerSeeder extends Seeder
         ]);
 
         Goal::create([
+            'user_id' => $user->id,
             'title' => 'Complete 2 Udemy Courses',
             'description' => 'Finish React and Docker courses this month',
             'type' => 'monthly',

@@ -12,6 +12,7 @@ class Skill extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'category_id',
         'name',
         'description',
@@ -31,6 +32,11 @@ class Skill extends Model
         'started_at' => 'date',
         'completed_at' => 'date',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function category(): BelongsTo
     {
@@ -52,14 +58,14 @@ class Skill extends Model
         return $this->hasMany(Milestone::class, 'skill_id');
     }
 
-    public function getProgressPercentageAttribute(): float
-    {
-        if ($this->target_level == 0) {
-            return 0;
-        }
-
-        return round(($this->current_level / $this->target_level) * 100, 2);
-    }
+//    public function getProgressPercentageAttribute(): float
+//    {
+//        if ($this->target_level == 0) {
+//            return 0;
+//        }
+//
+//        return round(($this->current_level / $this->target_level) * 100, 2);
+//    }
 
     public function getLevelNameAttribute(): string
     {

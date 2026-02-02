@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Goal extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'type',
@@ -29,6 +31,11 @@ class Goal extends Model
         'completed_at' => 'date',
         'progress_percentage' => 'integer',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function getDaysRemainingAttribute(): ?int
     {
