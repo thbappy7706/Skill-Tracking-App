@@ -44,7 +44,9 @@ class SkillResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\LearningResourcesRelationManager::class,
+            RelationManagers\PracticesRelationManager::class,
+            RelationManagers\MilestonesRelationManager::class,
         ];
     }
 
