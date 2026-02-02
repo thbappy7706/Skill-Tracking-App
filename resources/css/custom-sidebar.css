@@ -1,0 +1,18 @@
+/* Target the main sidebar specifically */
+aside.fi-main-sidebar {
+    border-right: 2px solid #e5e7eb !important;
+}
+
+/* For dark mode */
+.dark aside.fi-main-sidebar {
+    border-right: 2px solid #374151 !important;
+}
+
+/* Alternative - even more specific if needed */
+.fi-sidebar.fi-main-sidebar.fi-sidebar-open {
+    border-right: 2px solid #e5e7eb !important;
+}
+
+.dark .fi-sidebar.fi-main-sidebar.fi-sidebar-open {
+    border-right: 2px solid #374151 !important;
+}

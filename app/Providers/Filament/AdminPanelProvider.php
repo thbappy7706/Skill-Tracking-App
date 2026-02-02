@@ -58,6 +58,10 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->renderHook(
+                'panels::body.start',
+                fn () => view('filament.hooks.sidebar-styles')
+            )
             ->authMiddleware([
                 Authenticate::class,
             ]);
