@@ -22,6 +22,7 @@ class SkillLevelChart extends ChartWidget
         ];
 
         $counts = Skill::query()
+            ->where('user_id', auth()->id())
             ->selectRaw('current_level, count(*) as count')
             ->groupBy('current_level')
             ->pluck('count', 'current_level')

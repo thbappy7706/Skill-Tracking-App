@@ -12,7 +12,9 @@ class SkillCategoryChart extends ChartWidget
 
     protected function getData(): array
     {
-        $categories = SkillCategory::withCount('skills')->get();
+        $categories = SkillCategory::withCount(['skills' => function ($query) {
+            $query->where('user_id', auth()->id());
+        }])->get();
 
         return [
             'datasets' => [

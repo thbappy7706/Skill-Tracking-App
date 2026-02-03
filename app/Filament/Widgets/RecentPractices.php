@@ -16,7 +16,7 @@ class RecentPractices extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(Practice::query()->latest('practiced_at')->limit(5))
+            ->query(Practice::query()->where('user_id', auth()->id())->latest('practiced_at')->limit(5))
             ->columns([
                 TextColumn::make('title')
                     ->searchable()

@@ -16,19 +16,19 @@ class StatsOverview extends StatsOverviewWidget
 
     protected function getStats(): array
     {
-        $totalSkills = Skill::count();
-        $proficientSkills = Skill::whereIn('status', ['proficient', 'expert'])->count();
-        $learningSkills = Skill::whereIn('status', ['learning', 'practicing'])->count();
+        $totalSkills = Skill::where('user_id', auth()->id())->count();
+        $proficientSkills = Skill::where('user_id', auth()->id())->whereIn('status', ['proficient', 'expert'])->count();
+        $learningSkills = Skill::where('user_id', auth()->id())->whereIn('status', ['learning', 'practicing'])->count();
 
-        $totalPracticeHours = Practice::sum('duration_minutes') / 60;
-        $thisWeekPractice = Practice::where('practiced_at', '>=', now()->startOfWeek())
+        $totalPracticeHours = Practice::where('user_id', auth()->id())->sum('duration_minutes') / 60;
+        $thisWeekPractice = Practice::where('user_id', auth()->id())->where('practiced_at', '>=', now()->startOfWeek())
                 ->sum('duration_minutes') / 60;
 
-        $activeResources = LearningResource::where('status', 'in_progress')->count();
-        $completedResources = LearningResource::where('status', 'completed')->count();
+        $activeResources = LearningResource::where('user_id', auth()->id())->where('status', 'in_progress')->count();
+        $completedResources = LearningResource::where('user_id', auth()->id())->where('status', 'completed')->count();
 
-        $activeGoals = Goal::where('status', 'in_progress')->count();
-        $completedGoals = Goal::where('status', 'completed')->count();
+        $activeGoals = Goal::where('user_id', auth()->id())->where('status', 'in_progress')->count();
+        $completedGoals = Goal::where('user_id', auth()->id())->where('status', 'completed')->count();
 
         return [
             Stat::make('Total Skills', $totalSkills)
@@ -66,7 +66,7 @@ class StatsOverview extends StatsOverviewWidget
 
     protected function getAveragePracticeQuality(): string
     {
-        $average = Practice::avg('quality_rating');
+        $average = Practice::where('user_id', auth()->id())->avg('quality_rating');
         return $average ? number_format($average, 1) . '/5' : 'N/A';
     }
 }

@@ -34,17 +34,5 @@ class SkillCategory extends Model
         return $this->hasMany(Skill::class, 'category_id');
     }
 
-//    public function getProgressPercentageAttribute()
-//    {
-//        $skills = $this->skills;
-//
-//        if ($skills->isEmpty()) {
-//            return 0;
-//        }
-//
-//        $totalProgress = $skills->sum('current_level');
-//        $maxProgress = $skills->count() * 5; // Assuming max level is 5
-//
-//        return round(($totalProgress / $maxProgress) * 100, 2);
-//    }
+
 }

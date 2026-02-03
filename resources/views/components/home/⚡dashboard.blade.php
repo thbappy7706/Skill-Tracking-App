@@ -20,17 +20,17 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
     public function stats()
     {
         return [
-            'total_skills' => Skill::count(),
-            'proficient_skills' => Skill::whereIn('status', ['proficient', 'expert'])->count(),
-            'learning_skills' => Skill::whereIn('status', ['learning', 'practicing'])->count(),
-            'total_practice_hours' => round(Practice::sum('duration_minutes') / 60, 1),
+            'total_skills' => Skill::where('user_id', auth()->id())->count(),
+            'proficient_skills' => Skill::where('user_id', auth()->id())->whereIn('status', ['proficient', 'expert'])->count(),
+            'learning_skills' => Skill::where('user_id', auth()->id())->whereIn('status', ['learning', 'practicing'])->count(),
+            'total_practice_hours' => round(Practice::where('user_id', auth()->id())->sum('duration_minutes') / 60, 1),
             'this_week_hours' => round(
-                Practice::where('practiced_at', '>=', now()->startOfWeek())
+                Practice::where('user_id', auth()->id())->where('practiced_at', '>=', now()->startOfWeek())
                     ->sum('duration_minutes') / 60,
                 1
             ),
-            'active_goals' => Goal::where('status', 'in_progress')->count(),
-            'avg_practice_quality' => round(Practice::avg('quality_rating'), 1),
+            'active_goals' => Goal::where('user_id', auth()->id())->where('status', 'in_progress')->count(),
+            'avg_practice_quality' => round(Practice::where('user_id', auth()->id())->avg('quality_rating'), 1),
             'current_streak' => $this->calculateStreak(),
         ];
     }
@@ -42,7 +42,7 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
     #[Computed]
     public function recentPractices()
     {
-        return Practice::with('skill')
+        return Practice::where('user_id', auth()->id())->with('skill')
             ->latest('practiced_at')
             ->limit(5)
             ->get();
@@ -54,7 +54,7 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
     #[Computed]
     public function upcomingGoals()
     {
-        return Goal::whereIn('status', ['planned', 'in_progress'])
+        return Goal::where('user_id', auth()->id())->whereIn('status', ['planned', 'in_progress'])
             ->whereNotNull('target_date')
             ->orderBy('target_date')
             ->limit(3)
@@ -68,7 +68,11 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
     #[Computed]
     public function categories()
     {
-        return SkillCategory::withCount('skills')
+
+
+        return SkillCategory::where('user_id', auth()->id())->withCount(['skills' => function ($query) {
+                $query->where('user_id', auth()->id());
+            }])
             ->orderBy('order')
             ->get()
             ->map(function ($category) {
@@ -83,7 +87,7 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
     #[Computed]
     public function skillsByLevel()
     {
-        $levels = Skill::selectRaw('current_level, COUNT(*) as count')
+        $levels = Skill::where('user_id', auth()->id())->selectRaw('current_level, COUNT(*) as count')
             ->groupBy('current_level')
             ->get()
             ->pluck('count', 'current_level');
@@ -102,7 +106,7 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
      */
     private function calculateStreak(): int
     {
-        $practices = Practice::orderBy('practiced_at', 'desc')->get();
+        $practices = Practice::where('user_id', auth()->id())->orderBy('practiced_at', 'desc')->get();
 
         if ($practices->isEmpty()) {
             return 0;
@@ -165,7 +169,7 @@ new #[Layout('layouts::app'), Title('My Skill Dashboard - SkillUpx')] class exte
      */
     public function completeGoal($goalId)
     {
-        $goal = Goal::find($goalId);
+        $goal = Goal::where('user_id', auth()->id())->find($goalId);
 
         if ($goal) {
             $goal->update([

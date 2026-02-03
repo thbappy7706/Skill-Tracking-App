@@ -14,6 +14,7 @@ class PracticeDurationChart extends ChartWidget
     protected function getData(): array
     {
         $data = Practice::query()
+            ->where('user_id', auth()->id())
             ->selectRaw('DATE(practiced_at) as date, SUM(duration_minutes) as total_minutes')
             ->where('practiced_at', '>=', now()->subDays(7))
             ->groupBy('date')

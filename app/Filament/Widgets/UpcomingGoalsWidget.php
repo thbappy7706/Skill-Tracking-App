@@ -19,6 +19,7 @@ class UpcomingGoalsWidget extends BaseWidget
         return $table
             ->query(
                 Goal::query()
+                    ->where('user_id', auth()->id())
                     ->whereIn('status', ['planned', 'in_progress'])
                     ->whereNotNull('target_date')
                     ->orderBy('target_date')
