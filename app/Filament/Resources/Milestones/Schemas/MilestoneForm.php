@@ -25,18 +25,14 @@ class MilestoneForm
                     ->required()
                     ->searchable()
                     ->preload(),
-                TextInput::make('title')
-                    ->required(),
-                Textarea::make('description')
-                    ->columnSpanFull(),
-                Toggle::make('is_completed')
-                    ->required(),
+                TextInput::make('title')->required(),
+                Textarea::make('description')->columnSpanFull(),
                 DatePicker::make('target_date'),
                 DatePicker::make('completed_at'),
-                TextInput::make('proof_url')
-                    ->url(),
-                Textarea::make('notes')
-                    ->columnSpanFull(),
+                TextInput::make('proof_url')->url()->columnSpanFull(),
+                Textarea::make('notes')->columnSpanFull(),
+                Toggle::make('is_completed')->required(),
+
             ]);
     }
 }

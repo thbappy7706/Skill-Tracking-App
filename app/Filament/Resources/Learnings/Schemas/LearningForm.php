@@ -58,7 +58,7 @@ class LearningForm
                             ->rows(3)
                             ->columnSpanFull(),
                     ])
-                    ->columns(2),
+                    ->columnSpan(1),
 
                 Section::make('Progress')
                     ->schema([
@@ -88,7 +88,7 @@ class LearningForm
                             ->label('Completed Date')
                             ->native(false),
                     ])
-                    ->columns(2),
+                    ->columnSpan(1),
 
                 Section::make('Notes')
                     ->schema([
@@ -96,7 +96,7 @@ class LearningForm
                             ->rows(4)
                             ->columnSpanFull(),
                     ])
-                    ->collapsible(),
+                    ->collapsible()->columnSpanFull(),
             ]);
     }
 }
