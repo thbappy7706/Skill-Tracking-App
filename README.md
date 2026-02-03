@@ -191,6 +191,7 @@ MIT License
 
 For Laravel documentation: https://laravel.com/docs
 For Filament documentation: https://filamentphp.com/docs
+- Demo video: [Watch demo walkthrough on YouTube](https://www.youtube.com/watch?v=ErPCcYcNA3Q)
 
 ---
 
