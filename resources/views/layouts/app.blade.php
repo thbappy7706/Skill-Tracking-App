@@ -54,32 +54,32 @@
     @livewireStyles
 </head>
 <body class="antialiased">
-    {{ $slot }}
+{{ $slot }}
 
-    <script>
-        // Animate progress bars on load
-        window.addEventListener('load', () => {
-            // Reset and animate progress bars
-            document.querySelectorAll('.progress-bar-animate').forEach((bar, index) => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100 + (index * 100));
-            });
-
-            // Reset and animate chart bars
-            document.querySelectorAll('.bar-fill-animate').forEach((bar, index) => {
-                const height = bar.style.height;
-                bar.style.height = '0%';
-                setTimeout(() => {
-                    bar.style.height = height;
-                }, 200 + (index * 100));
-            });
+<script>
+    // Animate progress bars on load
+    window.addEventListener('load', () => {
+        // Reset and animate progress bars
+        document.querySelectorAll('.progress-bar-animate').forEach((bar, index) => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100 + (index * 100));
         });
-    </script>
 
-    @livewireScripts
+        // Reset and animate chart bars
+        document.querySelectorAll('.bar-fill-animate').forEach((bar, index) => {
+            const height = bar.style.height;
+            bar.style.height = '0%';
+            setTimeout(() => {
+                bar.style.height = height;
+            }, 200 + (index * 100));
+        });
+    });
+</script>
+
+@livewireScripts
 
 </body>
 </html>
