@@ -1,15 +1,5 @@
 <?php
-/**
- * SkillUpx Landing Page - Livewire v4 SFC
- *
- * Features:
- * - Single File Component structure
- * - Island isolation for live stats
- * - Mobile menu with Alpine.js
- * - Smooth scroll navigation
- * - Animated counters
- * - Real-time stats polling (optional)
- */
+
 
 use Livewire\Component;
 use Livewire\Attributes\Computed;
@@ -417,7 +407,7 @@ new #[Layout('layouts::guest'), Title( 'SkillUpx - Track Your Journey to Mastery
                         </span>
                     </div>
                     <p class="text-gray-500 text-sm">
-                        © 2024 SkillUpx. Built for developers, by developers.
+                      <?php echo now()->format('Y') ?>     SkillUpx. Built for developers, by developers.
                     </p>
                 </div>
             </div>

@@ -159,6 +159,30 @@ Feel free to customize this application for your personal needs. Some ideas:
 - Create mobile app version
 - Add team collaboration features
 
+## Screenshots
+
+Below are example screenshots of the application (images are stored in `public/screens`):
+
+- Home (guest)
+
+  ![Home (guest)](public/screens/home-guest.png)
+
+- Home (dashboard)
+
+  ![Home (dashboard)](public/screens/home-dashboard.png)
+
+- Dashboard
+
+  ![Dashboard](public/screens/dashboard.png)
+
+- Skills list
+
+  ![Skills list](public/screens/skills.png)
+
+- Create / Edit Skill
+
+  ![Create Skill](public/screens/cskill.png)
+
 ## License
 
 MIT License
